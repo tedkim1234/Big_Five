@@ -431,6 +431,23 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactForm) {
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+
+            // 빈 칸 유효성 검사
+            const name    = contactForm.querySelector('#contact-name').value.trim();
+            const email   = contactForm.querySelector('#contact-email').value.trim();
+            const message = contactForm.querySelector('#contact-message').value.trim();
+            if (!name || !email || !message) {
+                contactError.textContent = '이름, 이메일, 문의 내용을 모두 입력해 주세요.';
+                contactError.classList.remove('hidden');
+                return;
+            }
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                contactError.textContent = '올바른 이메일 주소를 입력해 주세요.';
+                contactError.classList.remove('hidden');
+                return;
+            }
+
             const btn = contactForm.querySelector('.contact-submit-btn');
             btn.disabled = true;
             btn.textContent = '전송 중...';
@@ -451,6 +468,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } catch {
                 btn.disabled = false;
                 btn.textContent = '문의 보내기';
+                contactError.textContent = '전송 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.';
                 contactError.classList.remove('hidden');
             }
         });

@@ -1,26 +1,40 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Big Five Personality Test</title>
+    <title>Big Five 성격 유형 검사</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Big Five Personality Test</h1>
-    </header>
-    <main>
-        <form id="personality-test">
-            <div id="questions-container"></div>
-            <button type="submit">Get Your Results</button>
-        </form>
-        <div id="results-container" style="display: none;">
-            <h2>Your Results</h2>
-            <div id="results"></div>
-        </div>
-    </main>
+    <div class="container">
+        <header class="hero">
+            <div class="noise"></div>
+            <h1>Big Five 성격 유형 검사</h1>
+            <p class="subtitle">당신의 내면을 탐구하는 과학적인 여정</p>
+        </header>
+
+        <main id="main-content">
+            <div id="test-intro">
+                <h2>당신은 어떤 사람인가요?</h2>
+                <p>본 검사는 심리학에서 가장 널리 인정받는 'Big Five' 모델을 바탕으로 제작되었습니다.</p>
+                <p>총 20개의 문항에 대해 평소 생각하시는 대로 솔직하게 답변해 주세요.</p>
+                <button id="start-btn">검사 시작하기</button>
+            </div>
+
+            <form id="personality-test" class="hidden">
+                <div id="questions-container"></div>
+                <button type="submit" class="submit-btn">결과 확인하기</button>
+            </form>
+
+            <div id="results-container" class="hidden">
+                <h2>검사 결과</h2>
+                <div id="results"></div>
+                <button id="restart-btn">다시 테스트하기</button>
+            </div>
+        </main>
+    </div>
     <script src="main.js"></script>
 </body>
 </html>

@@ -3,38 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Big Five 성격 유형 검사</title>
+    <title>Big Five 성격 유형 검사 (IPIP-50)</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
+
         <header class="hero">
-            <div class="noise"></div>
+            <div class="hero-noise"></div>
             <h1>Big Five 성격 유형 검사</h1>
-            <p class="subtitle">당신의 내면을 탐구하는 과학적인 여정</p>
+            <p class="subtitle">IPIP 표준 문항 기반 · 과학적으로 정제된 한국어 버전</p>
         </header>
 
         <main id="main-content">
+
+            <!-- ── 소개 화면 ── -->
             <div id="test-intro">
                 <h2>당신은 어떤 사람인가요?</h2>
-                <p>본 검사는 심리학에서 가장 널리 인정받는 'Big Five' 모델을 바탕으로 제작되었습니다.</p>
-                <p>총 20개의 문항에 대해 평소 생각하시는 대로 솔직하게 답변해 주세요.</p>
+                <p class="intro-desc">
+                    본 검사는 심리학에서 가장 널리 인정받는 <strong>Big Five(OCEAN) 모델</strong>을 바탕으로,
+                    IPIP(국제 성격 항목 풀)의 표준 문항을 과학적으로 정제한 한국어로 제공합니다.
+                </p>
+                <p class="intro-desc">
+                    총 <strong>50개의 문항</strong>에 평소 생각하시는 대로 솔직하게 답변해 주세요.
+                    소요 시간은 약 <strong>5~10분</strong>입니다.
+                </p>
+
+                <div class="traits-grid">
+                    <div class="trait-item trait-O">
+                        <span class="trait-letter">O</span>
+                        <div>
+                            <strong>개방성</strong>
+                            <small>Openness</small>
+                        </div>
+                    </div>
+                    <div class="trait-item trait-C">
+                        <span class="trait-letter">C</span>
+                        <div>
+                            <strong>성실성</strong>
+                            <small>Conscientiousness</small>
+                        </div>
+                    </div>
+                    <div class="trait-item trait-E">
+                        <span class="trait-letter">E</span>
+                        <div>
+                            <strong>외향성</strong>
+                            <small>Extraversion</small>
+                        </div>
+                    </div>
+                    <div class="trait-item trait-A">
+                        <span class="trait-letter">A</span>
+                        <div>
+                            <strong>우호성</strong>
+                            <small>Agreeableness</small>
+                        </div>
+                    </div>
+                    <div class="trait-item trait-N">
+                        <span class="trait-letter">N</span>
+                        <div>
+                            <strong>신경성</strong>
+                            <small>Neuroticism</small>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="intro-note">각 특성은 <strong>매우 낮음 ~ 매우 높음</strong>의 5단계로 평가되며, 강점과 성장 포인트가 함께 제공됩니다.</p>
                 <button id="start-btn">검사 시작하기</button>
             </div>
 
+            <!-- ── 검사 화면 ── -->
             <form id="personality-test" class="hidden">
+                <div id="progress-section">
+                    <div id="progress-header">
+                        <span>진행률</span>
+                        <span><span id="progress-count">0</span> / 50</span>
+                    </div>
+                    <div id="progress-bar-wrap">
+                        <div id="progress-bar-fill"></div>
+                    </div>
+                </div>
+
                 <div id="questions-container"></div>
                 <button type="submit" class="submit-btn">결과 확인하기</button>
             </form>
 
+            <!-- ── 결과 화면 ── -->
             <div id="results-container" class="hidden">
-                <h2>검사 결과</h2>
+                <h2 class="results-title">검사 결과</h2>
+                <p class="results-subtitle">아래는 귀하의 Big Five 성격 프로필입니다.</p>
+
+                <div id="radar-wrap">
+                    <canvas id="radar-chart"></canvas>
+                </div>
+
                 <div id="results"></div>
                 <button id="restart-btn">다시 테스트하기</button>
             </div>
+
         </main>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="main.js"></script>
 </body>
 </html>

@@ -1,1 +1,189 @@
-/* Add styles here */
+
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #50e3c2;
+    --background-color: #f7f9fb;
+    --text-color: #333;
+    --card-background: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --font-family: 'Nanum Gothic', sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 2rem;
+}
+
+.hero {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 16px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 20px var(--shadow-color);
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.hero .subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.noise {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800"><g fill-opacity="0.05"><circle fill="white" cx="400" cy="400" r="200"/><circle fill="%234a90e2" cx="400" cy="400" r="100"/></g></svg>');
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+#main-content {
+    background-color: var(--card-background);
+    padding: 2rem;
+    border-radius: 16px;
+    margin-top: -2rem;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    z-index: 10;
+    position: relative;
+}
+
+#test-intro {
+    text-align: center;
+}
+
+#start-btn, .submit-btn, #restart-btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 10px rgba(74, 144, 226, 0.4);
+}
+
+#start-btn:hover, .submit-btn:hover, #restart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(74, 144, 226, 0.5);
+}
+
+.hidden {
+    display: none;
+}
+
+#questions-container {
+    margin-bottom: 2rem;
+}
+
+.question {
+    background-color: #fdfdfd;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.question p {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin: 0 0 1rem 0;
+}
+
+.options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.options label {
+    display: flex;
+    align-items: center;
+    background-color: #f0f4f8;
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.options label:hover {
+    background-color: #e1e8f0;
+}
+
+.options input[type="radio"] {
+    margin-right: 0.5rem;
+    accent-color: var(--primary-color);
+}
+
+#results-container h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+.result-card {
+    background-color: var(--card-background);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.result-card h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.result-card .score-bar {
+    width: 100%;
+    background-color: #e0e0e0;
+    height: 10px;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.result-card .score-fill {
+    height: 100%;
+    background-color: var(--secondary-color);
+    width: 0;
+    transition: width 1s ease-in-out;
+}
+
+#restart-btn {
+    display: block;
+    margin: 2rem auto 0 auto;
+    background-color: var(--secondary-color);
+    box-shadow: 0 4px 10px rgba(80, 227, 194, 0.4);
+}
+
+#restart-btn:hover {
+    box-shadow: 0 6px 15px rgba(80, 227, 194, 0.5);
+}

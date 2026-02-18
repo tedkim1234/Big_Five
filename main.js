@@ -422,6 +422,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ──────────────────────────────────────────────────────────────
+    // 고객 문의 폼 (Formspree AJAX)
+    // ──────────────────────────────────────────────────────────────
+    const contactForm    = document.getElementById('contact-form');
+    const contactSuccess = document.getElementById('contact-success');
+    const contactError   = document.getElementById('contact-error');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = contactForm.querySelector('.contact-submit-btn');
+            btn.disabled = true;
+            btn.textContent = '전송 중...';
+            contactError.classList.add('hidden');
+
+            try {
+                const res = await fetch('https://formspree.io/f/mrealpnj', {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json' },
+                    body: new FormData(contactForm),
+                });
+                if (res.ok) {
+                    contactForm.classList.add('hidden');
+                    contactSuccess.classList.remove('hidden');
+                } else {
+                    throw new Error('server error');
+                }
+            } catch {
+                btn.disabled = false;
+                btn.textContent = '문의 보내기';
+                contactError.classList.remove('hidden');
+            }
+        });
+    }
+
+    // ──────────────────────────────────────────────────────────────
     // 레이더 차트 (Chart.js)
     // ──────────────────────────────────────────────────────────────
     function drawRadarChart(scores) {
